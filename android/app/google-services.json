@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "280320550509",
+    "project_id": "daphstore",
+    "storage_bucket": "daphstore.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280320550509:android:00d54f0e155fd07cdc8164",
+        "android_client_info": {
+          "package_name": "br.com.daph.daph_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMAhi1Y1xJbmqAFY6MptWobyIOUDngn1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280320550509:android:9ad07f99730084f8dc8164",
+        "android_client_info": {
+          "package_name": "br.com.daphstore.daphstore_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMAhi1Y1xJbmqAFY6MptWobyIOUDngn1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
