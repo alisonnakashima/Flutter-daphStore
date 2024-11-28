@@ -11,11 +11,7 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    // Converte os dados do snapshot para um Map
-    // final data = snapshot.data() as Map<String, dynamic>;
-    // print(data);
-    print("cotegory_tile");
+    print("category_tile");
     return ListTile(
       leading: CircleAvatar(
         radius: 25.0,

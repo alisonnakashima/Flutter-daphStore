@@ -16,11 +16,11 @@ class ProductData {
   ProductData.fromDocument(DocumentSnapshot snapshot) {
     // final data = snapshot.data() as Map<String, dynamic>;
     id = snapshot.id;
-    title = snapshot["title"];
-    description = snapshot["description"];
+    title = snapshot["title"]!;
+    description = snapshot["description"]!;
     price = snapshot["price"] + 0.00;
-    image = snapshot["image"];
-    smells = snapshot["types"];
+    image = snapshot["image"]!;
+    smells = snapshot["smells"]!;
 
   }
 

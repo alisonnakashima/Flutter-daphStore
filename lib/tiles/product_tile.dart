@@ -11,6 +11,8 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(productData.price);
+    print(productData.image);
     return InkWell(
       child: Card(
         child: type == "grid" ?
@@ -20,7 +22,7 @@ class ProductTile extends StatelessWidget {
             children: <Widget> [
               AspectRatio(
                 aspectRatio: 1.1,
-                child: Image.network(productData.image[0],
+                child: Image.network(productData.image[0] as String,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -57,7 +59,7 @@ class ProductTile extends StatelessWidget {
             Flexible(
               flex: 1,
               child: Image.network(
-                productData.image[0],
+                productData.image[0] as String,
                 fit: BoxFit.cover,
                 height: 250.0,
               ),
