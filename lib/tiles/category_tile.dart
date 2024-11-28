@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daphstore_app/screens/category_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTile extends StatelessWidget {
@@ -12,18 +13,21 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Converte os dados do snapshot para um Map
-    final data = snapshot.data() as Map<String, dynamic>;
-
+    // final data = snapshot.data() as Map<String, dynamic>;
+    // print(data);
+    print("cotegory_tile");
     return ListTile(
       leading: CircleAvatar(
         radius: 25.0,
           backgroundColor: Colors.transparent,
-          backgroundImage: NetworkImage(data["icon"]),
+          backgroundImage: NetworkImage((snapshot.data()! as Map<String, dynamic>)["icon"]),
       ),
-      title: Text(data["title"]),
-      trailing: Icon(Icons.keyboard_arrow_right),
+      title: Text((snapshot.data()! as Map<String, dynamic>)["title"]),
+      trailing: const Icon(Icons.keyboard_arrow_right),
       onTap: () {
-
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => CategoryScreen(snapshot))
+        );
       },
     );
   }
