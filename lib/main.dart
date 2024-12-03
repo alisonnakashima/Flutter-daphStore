@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'DaphStore App',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        primaryColor: Color.fromARGB(255, 4, 150, 186),
+        primarySwatch: Colors.purple,
+        primaryColor: Color.fromARGB(255, 255, 100, 110),
       ),
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),

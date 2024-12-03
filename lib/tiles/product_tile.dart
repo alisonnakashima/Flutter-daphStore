@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daphstore_app/datas/product_data.dart';
+import 'package:daphstore_app/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductTile extends StatelessWidget {
@@ -11,9 +12,14 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(productData.price);
-    print(productData.image);
+    //print(productData.price);
+    //print(productData.image);
     return InkWell(
+      onTap: (){
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => ProductScreen(productData))
+        );
+      },
       child: Card(
         child: type == "grid" ?
           Column(
