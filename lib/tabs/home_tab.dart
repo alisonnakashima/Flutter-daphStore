@@ -31,7 +31,10 @@ class HomeTab extends StatelessWidget{
               elevation: 0.0,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text("Novidades",
-                  style: TextStyle(fontSize: 26.0, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 26.0,
+                    color: Colors.white
+                  ),
                 ),
                 centerTitle: true,
               ),

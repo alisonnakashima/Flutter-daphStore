@@ -1,4 +1,5 @@
 import 'package:daphstore_app/screens/home_screen.dart';
+import 'package:daphstore_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Color.fromARGB(255, 255, 100, 110),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
