@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  final VoidCallback onThemeChanged;
+  const LoginScreen({super.key, required this.onThemeChanged});
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -17,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _codeController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
+
+
   // final _googleSignInLauncher = :
 
 
@@ -33,6 +37,12 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         title: const Text("DaphStore App"),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.brightness_6),
+            onPressed: widget.onThemeChanged, // Alterna o tema ao clicar no botão
+          ),
+        ],
       ),
       body: Form(
         key: _formKey, // Associa a chave ao formulário

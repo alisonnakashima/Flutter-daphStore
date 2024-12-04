@@ -33,10 +33,11 @@ class HomeTab extends StatelessWidget{
                 title: Text("Novidades",
                   style: TextStyle(
                     fontSize: 26.0,
-                    color: Colors.white
+                    color: Colors.black,
                   ),
                 ),
                 centerTitle: true,
+
               ),
             ),
             FutureBuilder<QuerySnapshot>(
