@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,9 +9,15 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Chave para o Form
+  String? _verificationId;
   bool showCodeField = false; // Variável para controlar a exibição do campo de código
+
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
+  final _codeController = TextEditingController();
+
+  final _auth = FirebaseAuth.instance;
+  // final _googleSignInLauncher = :
 
 
   @override
@@ -41,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: const InputDecoration(
                       hintText: "Ex: Roberto de Souza ",
                     ),
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.name,
                     validator: (text) {
                       if (text == null || text.isEmpty) {
                         return "Insira seu nome";
@@ -73,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           if (_formKey.currentState?.validate() == true) {
                             setState(() {
-                              showCodeField = true;
+                              _sendVerificationCode();
                             });
                           }
                         },
@@ -142,6 +149,36 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  void _sendVerificationCode() async {
+    final String phoneNumber = _phoneController.text.trim();
+
+    await _auth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      timeout: const Duration(seconds: 60),
+      verificationCompleted: (PhoneAuthCredential credential) {
+        // Automatically verifies the code
+        // Optionally handle this scenario
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Erro: ${e.message}")),
+        );
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        setState(() {
+          _verificationId = verificationId;
+          showCodeField = true;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Código de verificação enviado")),
+        );
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        _verificationId = verificationId;
+      },
     );
   }
 
