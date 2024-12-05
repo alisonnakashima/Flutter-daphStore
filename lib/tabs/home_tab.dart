@@ -1,17 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daphstore_app/main.dart';
+import 'package:daphstore_app/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/src/painting/image_stream.dart';
 
 class HomeTab extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
+
+    final Color primaryColor = Theme.of(context).primaryColor;
+
     Widget _buildBodyBack() => Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 255, 100, 110),
+                Theme.of(context).primaryColor,
                 Color.fromARGB(255, 253, 181, 168)
               ],
               begin: Alignment.topLeft,
@@ -24,12 +30,12 @@ class HomeTab extends StatelessWidget{
         _buildBodyBack(),
         CustomScrollView(
           slivers: <Widget> [
-            const SliverAppBar(
+            SliverAppBar(
               floating: true,
               snap: true,
               backgroundColor: Colors.transparent,
               elevation: 0.0,
-              flexibleSpace: FlexibleSpaceBar(
+              flexibleSpace: const FlexibleSpaceBar(
                 title: Text("Novidades",
                   style: TextStyle(
                     fontSize: 26.0,
@@ -38,6 +44,14 @@ class HomeTab extends StatelessWidget{
                 ),
                 centerTitle: true,
               ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.brightness_6),
+                  onPressed: (){
+
+                  }, // Alterna o tema ao clicar no botão
+                ),
+              ],
             ),
             FutureBuilder<QuerySnapshot>(
               future: FirebaseFirestore.instance

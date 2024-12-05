@@ -1,9 +1,8 @@
+import 'package:daphstore_app/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  final VoidCallback onThemeChanged;
-  const LoginScreen({super.key, required this.onThemeChanged});
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -19,8 +18,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _codeController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
-
   // final _googleSignInLauncher = :
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         title: const Text("DaphStore App"),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.brightness_6),
-            onPressed: widget.onThemeChanged, // Alterna o tema ao clicar no botão
-          ),
-        ],
       ),
       body: Form(
         key: _formKey, // Associa a chave ao formulário
@@ -127,6 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text("Código verificado com sucesso!")),
                               );
+                              _onSucess();
+                            } else {
+                              _onFail();
                             }
                           },
                           style: TextButton.styleFrom(
@@ -142,18 +138,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: primaryColor,
-                  textStyle: const TextStyle(fontSize: 16.0),
-                ),
-                child: const Text("Login com Google"),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 16.0),
+            //   child: TextButton(
+            //     onPressed: () {},
+            //     style: TextButton.styleFrom(
+            //       foregroundColor: Colors.white,
+            //       backgroundColor: primaryColor,
+            //       textStyle: const TextStyle(fontSize: 16.0),
+            //     ),
+            //     child: const Text("Login com Google"),
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -191,11 +187,16 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onSucess() {
-
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => HomeScreen(),
+      ),
+    );
   }
 
   void _onFail() {
-
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Código incorreto!")),
+    );
   }
 
 }

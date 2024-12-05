@@ -1,4 +1,3 @@
-import 'package:daphstore_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/login_screen.dart';
 import '../tiles/drawer_tile.dart';
@@ -6,9 +5,8 @@ import '../tiles/drawer_tile.dart';
 class CustomDrawer extends StatelessWidget {
 
   final PageController pageController;
-  final VoidCallback onThemeChanged;
 
-  CustomDrawer(this.pageController, this.onThemeChanged);
+  CustomDrawer(this.pageController);
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +40,9 @@ class CustomDrawer extends StatelessWidget {
                     const Positioned(
                       top: 8.0,
                       left: 8.0,
-                        child: Text("Daph Store",
+                      child: Text("Daph Store",
                           style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.bold)
-                          ),
+                      ),
                     ),
                     Positioned(
                       left: 0.0,
@@ -54,8 +52,8 @@ class CustomDrawer extends StatelessWidget {
                         children: <Widget>[
                           const Text("Olá,",
                             style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold
                             ),
                           ),
                           GestureDetector(
@@ -66,12 +64,12 @@ class CustomDrawer extends StatelessWidget {
                                   fontWeight: FontWeight.bold
                               ),
                             ),
-                            onTap:(){
+                            onTap: (){
                               Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => LoginScreen(onThemeChanged: onThemeChanged))
+                                MaterialPageRoute(builder: (context) => LoginScreen()
+                                ),
                               );
-
-                              },
+                            },
                           )
                         ],
                       ),

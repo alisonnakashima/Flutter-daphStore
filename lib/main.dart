@@ -1,23 +1,32 @@
 import 'package:daphstore_app/screens/home_screen.dart';
 import 'package:daphstore_app/screens/login_screen.dart';
+import 'package:daphstore_app/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'utils/theme_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child:
+        const MyApp()
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp> createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  bool _isDarkMode = false; // Variável para alternar entre temas
+class MyAppState extends State<MyApp> {
+  bool isDarkMode = false; // Variável para alternar entre temas
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +42,19 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blueGrey,
         primaryColor: const Color.fromARGB(255, 80, 80, 120),
       ),
-      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light, // Alterna os temas
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light, // Alterna os temas
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+        home: HomeScreen(),
       // home: LoginScreen(
       //   onThemeChanged: _toggleTheme, // Passa o método de alternância para a tela de login
       // ),
     );
   }
 
-  void _toggleTheme() {
+  void toggleTheme() {
     setState(() {
-      _isDarkMode = !_isDarkMode; // Alterna o modo de tema
+      isDarkMode = !isDarkMode; // Alterna o modo de tema
     });
   }
+
 }
