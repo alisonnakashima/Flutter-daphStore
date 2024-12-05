@@ -73,16 +73,18 @@ class ProductTile extends StatelessWidget {
             Flexible(
               flex: 1,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget> [
                   Text(
                     productData.title,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.w500
                     ),
                   ),
                   Text(
                     "R\$ ${productData.price.toStringAsFixed(2)}",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontSize: 16.0,

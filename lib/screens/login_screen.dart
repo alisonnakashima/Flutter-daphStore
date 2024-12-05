@@ -20,9 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final _auth = FirebaseAuth.instance;
 
-
   // final _googleSignInLauncher = :
-
 
   @override
   Widget build(BuildContext context) {

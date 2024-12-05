@@ -1,12 +1,14 @@
+import 'package:daphstore_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-
+import '../screens/login_screen.dart';
 import '../tiles/drawer_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
 
   final PageController pageController;
+  final VoidCallback onThemeChanged;
 
-  CustomDrawer(this.pageController);
+  CustomDrawer(this.pageController, this.onThemeChanged);
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +66,12 @@ class CustomDrawer extends StatelessWidget {
                                   fontWeight: FontWeight.bold
                               ),
                             ),
-                            onTap: (){
+                            onTap:(){
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => LoginScreen(onThemeChanged: onThemeChanged))
+                              );
 
-                            },
+                              },
                           )
                         ],
                       ),

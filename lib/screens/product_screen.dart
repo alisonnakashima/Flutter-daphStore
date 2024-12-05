@@ -94,8 +94,8 @@ class _ProductScreenState extends State<ProductScreen>{
                 SizedBox(
                   height: 44.0,
                   child: ElevatedButton(
-                    onPressed: selectedSmell != "" && selectedSmell != null ?
-                        (){} : null,
+                    //Adicionar a função carrinho aqui
+                    onPressed: (){},
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: primaryColor,

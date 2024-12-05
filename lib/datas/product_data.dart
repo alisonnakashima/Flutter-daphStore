@@ -18,7 +18,7 @@ class ProductData {
     id = snapshot.id;
     title = snapshot["title"]!;
     description = snapshot["description"]!;
-    price = snapshot["price"] + 0.00;
+    price = snapshot["price"]! + 0.00;
     image = snapshot["image"]!;
     smells = snapshot["smells"]!;
 

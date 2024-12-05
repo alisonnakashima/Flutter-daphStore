@@ -35,9 +35,10 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light, // Alterna os temas
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(
-        onThemeChanged: _toggleTheme, // Passa o método de alternância para a tela de login
-      ),
+      home: HomeScreen(),
+      // home: LoginScreen(
+      //   onThemeChanged: _toggleTheme, // Passa o método de alternância para a tela de login
+      // ),
     );
   }
 
